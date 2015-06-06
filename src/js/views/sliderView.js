@@ -87,7 +87,7 @@
                 var value = self._calculate(rate);
 
                 self._addEffect();
-               self.queue.emit('reset:view', { 'current' : value });
+                self.queue.emit('reset:view', { 'current' : value });
                 self.queue.emit('end', value);
             });
         },
