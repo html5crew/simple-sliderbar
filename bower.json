@@ -20,6 +20,8 @@
     "grunt",
     "test",
     "tests",
+    "src",
+    "samples",
     "*_spec.js",
     "karma.conf.js",
     "package.json",
