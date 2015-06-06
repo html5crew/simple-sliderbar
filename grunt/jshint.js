@@ -1,6 +1,6 @@
 module.exports = {
-    options : {
-        jshintrc: '.jshintrc'
-    },
-    uses_defaults : [ 'Gruntfile.js', 'src/js/**/*.js', 'test/*.js' ]
+    dist: {
+        //src : '<%= concat.dist.dest%>',
+        //dest : 'dist/<%= pkg.name %>-<%= pkg.version %>.merged.v.js'
+    }
 };

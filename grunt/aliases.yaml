@@ -1,8 +1,10 @@
-#default:
-#  - 'serve'
-
 prepare:
   - 'jshint'
+  - 'clean'
+  - 'css2js'
+  - 'concat'
+#  - 'jsversion'
+  - 'uglify'
 
 server:
   - 'serve'
