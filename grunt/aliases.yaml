@@ -1,10 +1,12 @@
-prepare:
+build:
   - 'jshint'
   - 'clean'
   - 'css2js'
   - 'concat'
-#  - 'jsversion'
   - 'uglify'
 
 server:
   - 'serve'
+
+
+
