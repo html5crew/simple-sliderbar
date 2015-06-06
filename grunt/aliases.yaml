@@ -1,3 +1,6 @@
+server:
+  - 'serve'
+
 build:
   - 'jshint'
   - 'clean'
@@ -5,8 +8,6 @@ build:
   - 'concat'
   - 'uglify'
 
-server:
-  - 'serve'
 
 
 

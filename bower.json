@@ -5,20 +5,26 @@
     "DuhyeongKim <dduskim@gmail.com>"
   ],
   "main": "sliderbar.js",
-  "description": "",
+  "description": "A simple and lightweight vanilla JS slider.",
   "moduleType": [
     "globals"
   ],
   "keywords": [
-    "sliderbar"
+    "sliderbar", "slider"
   ],
   "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
+    "grunt",
     "test",
-    "tests"
+    "tests",
+    "*_spec.js",
+    "karma.conf.js",
+    "package.json",
+    "Gruntfile.coffee",
+    "README.md"
   ],
   "dependencies": {
     "sizzle": "~2.0.0",

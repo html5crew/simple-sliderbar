@@ -1,0 +1,188 @@
+<html>
+<body>
+
+<style>
+	.landscape_ex {
+		float:left;
+		width:500px;
+	}
+	.vertical_ex {
+		position:absolute;
+		float:left;
+		margin-left:500px;
+	}
+	.box.vertical {
+		float:left;
+		width:300px;
+	}
+	.background {
+		background-color:black;
+		width:400px;
+		padding:20px;
+		opacity:0.8;
+	}
+	.background .wrap {
+		position:relative;
+		width:400px;
+		height:20px;
+	}
+	.background.vertical {
+		width:20px;
+		height:400px;
+	}
+	.background.vertical .wrap {
+		width:20px;
+		height:400px;
+	}
+
+</style>
+<h1>SliderBar Demo</h1>
+<div class="landscape_ex">
+	<div class="box">
+		<h3>default</h3>
+		<div>min="-100" max="100" step="1" start="0"</div>
+		<textarea class="result_move_0"></textarea>
+		<textarea class="result_end_0"></textarea>
+		<br/>
+		<div class="background">
+			<div class="slider_0 wrap">
+				<div class="pp_slider">
+					<input class="pp_slider_input" type="range" min="-100" max="100" step="1" start="0" style="display:none">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="box">
+		<h3>steps mode</h3>
+		<div>min="-5" max="5" step="1" start="0" mode="steps"</div>
+		<textarea class="result_move_1"></textarea>
+		<textarea class="result_end_1"></textarea>
+		<br/>
+		<div class="background">
+			<div class="slider_1 wrap">
+				<div class="pp_slider">
+					<!--<input class="pp_slider_input" type="range" min="-100" max="100" step="1" start="0" style="display:none">-->
+					<input class="pp_slider_input pp_hide" type="range" min="-5" max="5" step="1" start="0" mode="steps" style="display:none">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="box">
+		<h3>nosteps mode</h3>
+		<div>min="-5" max="5" step="0.0025" start="0"</div>
+		<textarea class="result_move_2"></textarea>
+		<textarea class="result_end_2"></textarea>
+		<br/>
+		<div class="background">
+			<div class="slider_2 wrap">
+				<div class="pp_slider">
+					<!--<input class="pp_slider_input" type="range" min="-100" max="100" step="1" start="0" style="display:none">-->
+					<input class="pp_slider_input pp_hide" type="range" min="-5" max="5" step="0.0025" start="0" style="display:none">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="vertical_ex">
+	<div class="box vertical">
+		<h3>vertical mode</h3>
+		<div>min="0.4" max="1.2" step="0.0025" orientation="vertical" start="1" current="1"</div>
+		<textarea class="result_move_3"></textarea>
+		<textarea class="result_end_3"></textarea>
+		<div class="background vertical">
+			<div class="slider_3 wrap">
+				<div class="pp_slider">
+					<input class="pp_slider_input pp_hide" type="range" min="1" max="1.5" step="0.0025" orientation="vertical" start="1" style="display: none;">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="box vertical">
+		<h3>vertical mode (상속해서 %로 수정)</h3>
+		<div>min="0.4" max="1.2" step="0.0025" orientation="vertical" start="1" current="1"</div>
+		<textarea class="result_move_4"></textarea>
+		<textarea class="result_end_4"></textarea>
+		<div class="background vertical">
+			<div class="slider_4 wrap">
+				<div class="pp_slider">
+					<input class="pp_slider_input pp_hide" type="range" min="1" max="1.5" step="0.0025" orientation="vertical" start="1" style="display: none;">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="/bower_components/selector-alias/selector-alias.js" type="text/javascript"></script>
+<script src="/bower_components/simple-inheritance/class.js" type="text/javascript"></script>
+<script src="/bower_components/simple-observer/observer.js" type="text/javascript"></script>
+<script src="/bower_components/simple-event/event.js" type="text/javascript"></script>
+<script src="/bower_components/simple-classList/classList.js" type="text/javascript"></script>
+
+<!--<script src="/dist/sliderbar-1.0.0.js" type="text/javascript"></script>-->
+<script src="/dist/sliderbar-1.0.0.min.js" type="text/javascript"></script>
+
+<script>
+	var options = {
+		min: 0.4, max: 1.2, start: 1, current: 1
+	};
+
+	var el0 = Selector.$$('.slider_0 .pp_slider')[0];
+	this.slider0 = new SliderBar.App(el0, {});
+	this.slider0.on('move', function (offset) {
+		Selector.$$('.result_move_0')[0].value = 'move : ' + offset;
+	});
+	this.slider0.on('end', function (offset) {
+		Selector.$$('.result_end_0')[0].value = 'end : ' + offset;
+	});
+
+	var el1 = Selector.$$('.slider_1 .pp_slider')[0];
+	this.slider1 = new SliderBar.App(el1, {});
+	this.slider1.on('move', function (offset) {
+		Selector.$$('.result_move_1')[0].value = 'move : ' + offset;
+	});
+	this.slider1.on('end', function (offset) {
+		Selector.$$('.result_end_1')[0].value = 'end : ' + offset;
+	});
+
+	var el2 = Selector.$$('.slider_2 .pp_slider')[0];
+	this.slider2 = new SliderBar.App(el2, {});
+	this.slider2.on('move', function (offset) {
+		Selector.$$('.result_move_2')[0].value = 'move : ' + offset;
+	});
+	this.slider2.on('end', function (offset) {
+		Selector.$$('.result_end_2')[0].value = 'end : ' + offset;
+	});
+
+	var el3 = Selector.$$('.slider_3 .pp_slider')[0];
+	this.slider3 = new SliderBar.App(el3, options);
+	this.slider3.on('move', function (offset) {
+		Selector.$$('.result_move_3')[0].value = 'move : ' + offset;
+	});
+	this.slider3.on('end', function (offset) {
+		Selector.$$('.result_end_3')[0].value = 'end : ' + offset;
+	});
+
+	var ZoomSlider = SliderBar.App.extend({
+		_setInputValue: function (result) {
+			var val = result * 100;
+
+			this.emit('set:value', Math.round(val) + '%');
+			this.inputEl.setAttribute('value', result);
+		}
+	});
+
+	var el4 = Selector.$$('.slider_4 .pp_slider')[0];
+	this.slider4 = new ZoomSlider(el4, options);
+	this.slider4.on('move', function (offset) {
+		Selector.$$('.result_move_4')[0].value = 'move : ' + offset;
+	});
+	this.slider4.on('end', function (offset) {
+		Selector.$$('.result_end_4')[0].value = 'end : ' + offset;
+	});
+</script>
+</body>
+</html>
