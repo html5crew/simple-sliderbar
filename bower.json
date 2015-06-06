@@ -1,0 +1,31 @@
+{
+  "name": "simple-sliderbar",
+  "version": "1.0.0",
+  "authors": [
+    "DuhyeongKim <dduskim@gmail.com>"
+  ],
+  "main": "sliderbar.js",
+  "description": "",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "sliderbar"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "sizzle": "~2.0.0",
+    "selector-alias": "~1.0.0",
+    "simple-event": "~1.0.0",
+    "simple-inheritance": "*",
+    "simple-observer": "*",
+    "simple-classList": "~1.0.0"
+  }
+}

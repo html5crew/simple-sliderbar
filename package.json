@@ -1,0 +1,22 @@
+{
+  "name": "simple-sliderbar",
+  "version": "0.0.1",
+  "description": "",
+  "main": "sliderbar.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sliderbar"
+  ],
+  "author": "DuhyeongKim <dduskim@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-serve": "^0.1.6",
+    "load-grunt-config": "^0.17.1"
+  }
+}
