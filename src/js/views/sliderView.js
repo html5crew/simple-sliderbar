@@ -73,17 +73,22 @@
         _bindEvent: function () {
             var self = this;
             exports.event.on(this.wrapEl, 'mousedown', function (e) {
+                var current, start, pageOffset;
                 var point = (e.touches && e.touches.length > 0) ? e.touches[0] : e;
 
-                var currentX = point.pageX || point.clientX;
-                var currentY = point.pageY || point.clientY;
-                var current = self.options.orientation === 'vertical' ? currentY : currentX;
+                if (self.options.orientation === 'vertical') {
+                    current = point.pageY || point.clientY;
+                    start = self.clientRect[self.PROPS_NAME['POSITION']];
+                    pageOffset = window.pageYOffset;
 
-                var start = self.clientRect[self.PROPS_NAME['POSITION']];
-                var width = self.clientRect[self.PROPS_NAME['WIDTH']];
+                } else {
+                    current = point.pageX || point.clientX;
+                    start = self.clientRect[self.PROPS_NAME['POSITION']];
+                    pageOffset = window.pageXOffset;
+                }
 
-                var offset = current - start;
-                var rate = offset / width * 100;
+                var offset = current - (start + pageOffset);
+                var rate = offset / self.clientRect[self.PROPS_NAME['WIDTH']] * 100;
                 var value = self._calculate(rate);
 
                 self._addEffect();
