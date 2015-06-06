@@ -3,7 +3,7 @@
 
     var helper = exports.helper;
 
-    var LineView = Class.extend({
+    exports.LineView = Class.extend({
         init: function (el, queue, options) {
             this.wrapEl = el;
             this.queue = queue;
@@ -37,7 +37,5 @@
             }
         }
     });
-
-    exports.LineView = LineView;
 
 })(window.SliderBar = (typeof window.SliderBar === 'undefined') ? {} : window.SliderBar);

@@ -3,7 +3,7 @@
 
     var helper = exports.helper;
 
-    var PointView = Class.extend({
+    exports.PointView = Class.extend({
         init: function (el, queue, options) {
             this.wrapEl = el;
             this.queue = queue;
@@ -62,7 +62,5 @@
             }
         }
     });
-
-    exports.PointView = PointView;
 
 })(window.SliderBar = (typeof window.SliderBar === 'undefined') ? {} : window.SliderBar);

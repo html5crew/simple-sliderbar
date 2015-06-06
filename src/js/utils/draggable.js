@@ -1,22 +1,5 @@
-/* global Draggable, jshint devel: true */
 (function (exports) {
     'use strict';
-
-    exports.EVENT = (function () {
-        var TOUCH_EVENT = {
-                START: 'touchstart',
-                MOVE: 'touchmove',
-                END: 'touchend',
-                CANCEL: 'touchcancel'
-            },
-            MOUSE_EVENT = {
-                START: 'mousedown',
-                MOVE: 'mousemove',
-                END: 'mouseup'
-            };
-
-        return !!('ontouchstart' in window) ? TOUCH_EVENT : MOUSE_EVENT;
-    })();
 
     exports.Draggable = Observer.extend({
         init: function (options) {
@@ -28,7 +11,7 @@
             this.options = options;
             this.el = options.el || null;
 
-            this.EVENT = exports.EVENT;
+            this.EVENT_NAME = exports.EVENT_NAME;
             this.offset = null;
 
             this._bindEvent();
@@ -38,21 +21,21 @@
             this.initialX = point.pageX || point.clientX;
             this.initialY = point.pageY || point.clientY;
 
-            exports.event.on(window, this.EVENT.MOVE, this._onmousemove);
-            exports.event.on(window, this.EVENT.END, this._onmouseup);
-            if(this.EVENT.CANCEL) {
-                exports.event.on(window, this.EVENT.CANCEL, this._onmouseup);
+            exports.event.on(window, this.EVENT_NAME.MOVE, this._onmousemove);
+            exports.event.on(window, this.EVENT_NAME.END, this._onmouseup);
+            if(this.EVENT_NAME.CANCEL) {
+                exports.event.on(window, this.EVENT_NAME.CANCEL, this._onmouseup);
             }
             this.offset = this._calOffset(e);
             this.emit('start', this.offset);
         },
         onmouseup: function (e) {
-            exports.event.off(window, this.EVENT.MOVE, this._onmousemove);
-            exports.event.off(window, this.EVENT.END, this._onmouseup);
-            if(this.EVENT.CANCEL) {
-                exports.event.off(window, this.EVENT.CANCEL, this._onmouseup);
+            exports.event.off(window, this.EVENT_NAME.MOVE, this._onmousemove);
+            exports.event.off(window, this.EVENT_NAME.END, this._onmouseup);
+            if(this.EVENT_NAME.CANCEL) {
+                exports.event.off(window, this.EVENT_NAME.CANCEL, this._onmouseup);
             }
-            
+            this.offset = this._calOffset(e);
             this.emit('end', this.offset);
         },
         onmousemove: function (e) {
@@ -76,12 +59,12 @@
                 self._preventEvent(e);
                 self.onmousemove(ev);
             };
-            exports.event.on(this.el, this.EVENT.START, function (e) {
+            exports.event.on(this.el, this.EVENT_NAME.START, function (e) {
                 self._onmousedown(e);
             });
         },
         _preventEvent: function (e) {
-            if (!this.options.eventBubbling) {
+            if (this.options && !this.options.eventBubbling) {
                 exports.event.preventDefault(e);
                 exports.event.stopPropagation(e);
             }

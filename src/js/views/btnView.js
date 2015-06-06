@@ -4,13 +4,13 @@
     var helper = exports.helper;
     var MAX = 100;
 
-    var BtnView = exports.Draggable.extend({
+    exports.BtnView = exports.Draggable.extend({
         init: function (el, queue, options) {
             this.wrapEl = el;
             this.queue = queue;
             this.options = options;
 
-            this.EVENT = exports.EVENT;
+            this.EVENT_NAME = exports.EVENT_NAME;
             this.PROPS_NAME = helper.getPropsName(options.orientation);
 
             this.initialX = 0;
@@ -52,7 +52,6 @@
 
             this.step = helper.num2rate(options.step, options.range) || 1;
             this.startRate = helper.isNumeric(startRate) ? startRate : 0;
-            this.currentRate = helper.isNumeric(currentRate) ? currentRate : startRate;
 
             this.lastRate = helper.isNumeric(currentRate) ? currentRate : startRate;
             this.rate = helper.isNumeric(currentRate) ? currentRate : startRate;
@@ -113,9 +112,6 @@
             this._initRate();
             this._update();
         },
-        _resize: function () {
-            this._update();
-        },
         _setValue: function (val) {
             this.valEl.innerHTML = val;
         },
@@ -128,7 +124,5 @@
             this.options['range'] = this.options['max'] - this.options['min'];
         }
     });
-
-    exports.BtnView = BtnView;
 
 })(window.SliderBar = (typeof window.SliderBar === 'undefined') ? {} : window.SliderBar);

@@ -3,7 +3,7 @@
 
     var helper = exports.helper;
 
-    var SliderView = Class.extend({
+    exports.SliderView = Class.extend({
         init: function (el, queue, options) {
             this.el = el;
             this.queue = queue;
@@ -62,13 +62,13 @@
             });
         },
         _initBarView: function (el, options) {
-            this.barView = new exports.BarView(this.wrapEl, this.queue, options);
+            new exports.BarView(this.wrapEl, this.queue, options);
         },
         _initLineView: function (el, options) {
             this.lineView = new exports.LineView(this.wrapEl, this.queue, options);
         },
         _initPointView: function (el, options) {
-            this.pointView = new exports.PointView(this.wrapEl, this.queue, options);
+            new exports.PointView(this.wrapEl, this.queue, options);
         },
         _bindEvent: function () {
             var self = this;
@@ -118,7 +118,5 @@
         }
 
     });
-
-    exports.SliderView = SliderView;
 
 })(window.SliderBar = (typeof window.SliderBar === 'undefined') ? {} : window.SliderBar);

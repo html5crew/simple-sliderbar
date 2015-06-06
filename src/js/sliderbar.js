@@ -1,11 +1,10 @@
-/* global $$, DOMEvent, Class, Observer, Draggable */
-
+/* jshint unused:true */
 (function (exports) {
     'use strict';
 
     var helper = exports.helper;
 
-    var App = Observer.extend({
+    exports.App = Observer.extend({
         init: function (el, options) {
             if (!el) {
                 throw new Error('element should be provided');
@@ -67,7 +66,7 @@
             return parseFloat(option);
         },
         _initSliderView: function (el, options) {
-            this.sliderView = new exports.SliderView(el, this, options);
+            new exports.SliderView(el, this, options);
         },
         _bindEvent: function () {
             var self = this;
@@ -79,7 +78,5 @@
             this.emit('update:view');
         }
     });
-
-    exports.App = App;
 
 })(window.SliderBar = (typeof window.SliderBar === 'undefined') ? {} : window.SliderBar);

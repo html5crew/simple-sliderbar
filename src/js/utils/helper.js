@@ -1,10 +1,8 @@
 (function (exports) {
     'use strict';
 
-    //exports = {};
-
     var doc = document;
-    var helper = {
+    exports.helper = {
         isNumeric: function (n) {
             return !isNaN(parseFloat(n)) && isFinite(n);
         },
@@ -48,7 +46,5 @@
             return el;
         }
     };
-
-    exports.helper = helper;
 
 })(window.SliderBar = (typeof window.SliderBar === 'undefined') ? {} : window.SliderBar);

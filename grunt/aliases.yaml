@@ -1,5 +1,8 @@
 #default:
 #  - 'serve'
 
+prepare:
+  - 'jshint'
+
 server:
   - 'serve'

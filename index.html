@@ -111,12 +111,26 @@
 <script src="/bower_components/simple-event/event.js" type="text/javascript"></script>
 <script src="/bower_components/simple-classList/classList.js" type="text/javascript"></script>
 
+<!-- SliderBar -->
+<!--<link href="http://localhost:9000/src/css/sliderbar.css" rel="stylesheet" type="text/css" >-->
+
+<!--<script src="http://localhost:9000/src/js/utils/init.js" type="text/javascript"></script>-->
+<!--<script src="http://localhost:9000/src/js/utils/helper.js" type="text/javascript"></script>-->
+<!--<script src="http://localhost:9000/src/js/utils/draggable.js" type="text/javascript"></script>-->
+
+<!--<script src="http://localhost:9000/src/js/sliderbar.js" type="text/javascript"></script>-->
+<!--<script src="http://localhost:9000/src/js/views/sliderView.js" type="text/javascript"></script>-->
+<!--<script src="http://localhost:9000/src/js/views/btnView.js" type="text/javascript"></script>-->
+<!--<script src="http://localhost:9000/src/js/views/barView.js" type="text/javascript"></script>-->
+<!--<script src="http://localhost:9000/src/js/views/lineView.js" type="text/javascript"></script>-->
+<!--<script src="http://localhost:9000/src/js/views/pointView.js" type="text/javascript"></script>-->
 
 <!-- SliderBar -->
 <link rel="stylesheet" type="text/css" href="/src/css/sliderbar.css">
 
-<script src="/src/js/libs/draggable.js" type="text/javascript"></script>
-<script src="/src/js/libs/helper.js" type="text/javascript"></script>
+<script src="/src/js/utils/init.js" type="text/javascript"></script>
+<script src="/src/js/utils/helper.js" type="text/javascript"></script>
+<script src="/src/js/utils/draggable.js" type="text/javascript"></script>
 
 <script src="/src/js/sliderbar.js" type="text/javascript"></script>
 <script src="/src/js/views/sliderView.js" type="text/javascript"></script>
@@ -125,11 +139,12 @@
 <script src="/src/js/views/lineView.js" type="text/javascript"></script>
 <script src="/src/js/views/pointView.js" type="text/javascript"></script>
 
+
 <script>
-	SliderBar.$ = Selector.$;
-	SliderBar.$$ = Selector.$$;
-	SliderBar.event = DOMEvent;
-	SliderBar.classList = DOMClassList;
+//	SliderBar.$ = Selector.$;
+//	SliderBar.$$ = Selector.$$;
+//	SliderBar.event = DOMEvent;
+//	SliderBar.classList = DOMClassList;
 
 	var options = {
 		min: 0.4, max: 1.2, start: 1, current: 1
@@ -170,7 +185,6 @@
 	this.slider3.on('end', function (offset) {
 		Selector.$$('.result_end_3')[0].value = 'end : ' + offset;
 	});
-
 
 	var ZoomSlider = SliderBar.App.extend({
 		_setInputValue: function (result) {

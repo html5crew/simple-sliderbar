@@ -3,7 +3,7 @@
 
     var helper = exports.helper;
 
-    var BarView = Class.extend({
+    exports.BarView = Class.extend({
         init: function (el, queue, options) {
             this.wrapEl = el;
             this.queue = queue;
@@ -28,11 +28,8 @@
             });
         },
         _getWidth: function () {
-            var width = this.el.getBoundingClientRect()[this.PROPS_NAME['WIDTH']];
-            return width;
+            return this.el.getBoundingClientRect()[this.PROPS_NAME['WIDTH']];
         }
     });
-
-    exports.BarView = BarView;
 
 })(window.SliderBar = (typeof window.SliderBar === 'undefined') ? {} : window.SliderBar);
