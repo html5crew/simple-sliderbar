@@ -40,6 +40,7 @@
 	<script>
 		var el2 = Selector.$$('.slider_2 .pp_slider')[0];
     	this.slider2 = new SliderBar.App(el2, {
+    		// override
     		min: 0.4, 
     		max: 1.2, 
     		start: 1, 
@@ -49,21 +50,21 @@
 ```
 
 ## Options
- * You can add options to input attributes or arguments object.
+You can add options to input attributes or arguments object.
  - min : Number
  - max : Number
  - start : Number
  - current : Number
  - orientation : String
-	- "horizontal" (default)
-    - "vertical"
+    	- "horizontal" (default)
+    	- "vertical"
  - mode : String
 	- "nosteps" (default)
    	- "steps"
 
 
 ## Demo
- * You can use 'grunt server' command
+You can use 'grunt server' command
  * dev version 	: http://localhost:9000/samples/dev.html
  * dist version 	: http://localhost:9000/samples/dist.html
 
