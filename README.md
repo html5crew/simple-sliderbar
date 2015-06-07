@@ -56,11 +56,11 @@ You can add options to input attributes or arguments object.
  - start : Number
  - current : Number
  - orientation : String
-    	- "horizontal" (default)
-    	- "vertical"
+    - "horizontal" (default)
+    - "vertical"
  - mode : String
-	- "nosteps" (default)
-   	- "steps"
+    - "nosteps" (default)
+    - "steps"
 
 
 ## Demo
