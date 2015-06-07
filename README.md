@@ -32,11 +32,11 @@
         		// no options
         	});
 	</script>
-		<div class="slider_2 wrap">
-			<div class="pp_slider">
-				<input class="pp_slider_input pp_hide" type="range" min="-5" max="5" step="0.0025" start="0" style="display:none">
-			</div>
+	<div class="slider_2 wrap">
+		<div class="pp_slider">
+			<input class="pp_slider_input pp_hide" type="range" min="-5" max="5" step="0.0025" start="0" style="display:none">
 		</div>
+	</div>
 	<script>
 		var el2 = Selector.$$('.slider_2 .pp_slider')[0];
     	this.slider2 = new SliderBar.App(el2, {
