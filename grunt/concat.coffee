@@ -21,7 +21,7 @@ sources = [
 module.exports =
     dist:
         src: sources
-        dest: 'dist/sliderbar-<%= pkg.version %>.js'
+        dest: 'dist/sliderbar.js'
     standalone:
         src: dependencies.concat(sources)
-        dest: 'dist/sliderbar-standalone-<%= pkg.version %>.js'
+        dest: 'dist/sliderbar.standalone.js'
