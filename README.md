@@ -77,4 +77,5 @@ You can use 'grunt server' command
 
 
 ## Change Log
+* 1.0.2 : vertical mode position bugfix
 * 1.0.0 : first release

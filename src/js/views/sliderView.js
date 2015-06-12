@@ -78,12 +78,14 @@
 
                 if (self.options.orientation === 'vertical') {
                     current = point.pageY || point.clientY;
-                    start = self.clientRect[self.PROPS_NAME['POSITION']];
+                    //start = self.clientRect[self.PROPS_NAME['POSITION']];
+                    start = self.wrapEl.getBoundingClientRect()[self.PROPS_NAME['POSITION']];
                     pageOffset = window.pageYOffset;
 
                 } else {
                     current = point.pageX || point.clientX;
-                    start = self.clientRect[self.PROPS_NAME['POSITION']];
+                    //start = self.clientRect[self.PROPS_NAME['POSITION']];
+                    start = self.wrapEl.getBoundingClientRect()[self.PROPS_NAME['POSITION']];
                     pageOffset = window.pageXOffset;
                 }
 
