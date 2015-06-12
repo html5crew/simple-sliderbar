@@ -28,7 +28,10 @@
             });
         },
         _getWidth: function () {
-            return this.el.getBoundingClientRect()[this.PROPS_NAME['WIDTH']];
+            var width = this.el.getBoundingClientRect()[this.PROPS_NAME['WIDTH']];
+            this.wrapEl.setAttribute('data-size', width);
+
+            return width;
         }
     });
 

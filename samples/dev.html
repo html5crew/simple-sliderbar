@@ -175,6 +175,8 @@
 	this.slider3.on('end', function (offset) {
 		Selector.$$('.result_end_3')[0].value = 'end : ' + offset;
 	});
+//	var size = Selector.$$('.pp_slider_wrap', el3)[0].getAttribute('data-size');
+//	el3.style.cssText = 'margin-top:' + (-size/2) + ';top:50%';
 
 	var ZoomSlider = SliderBar.App.extend({
 		_setInputValue: function (result) {
