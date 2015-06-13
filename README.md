@@ -8,6 +8,29 @@
 	bower install simple-sliderbar
 ```
 
+
+## Demo
+[http://html5crew.github.io/simple-sliderbar/]
+
+You can use 'grunt server' command
+ * dev version 	: http://localhost:9000/samples/dev.html
+ * dist version 	: http://localhost:9000/samples/dist.html
+
+
+## Options
+You can add options to input attributes or arguments object.
+ - min : Number
+ - max : Number
+ - start : Number
+ - current : Number
+ - orientation : String
+    - "horizontal" (default)
+    - "vertical"
+ - mode : String
+    - "nosteps" (default)
+    - "steps"
+
+
 ## Usage
 ```html
 	<!-- default -->
@@ -50,25 +73,6 @@
     	});
 	</script>
 ```
-
-## Options
-You can add options to input attributes or arguments object.
- - min : Number
- - max : Number
- - start : Number
- - current : Number
- - orientation : String
-    - "horizontal" (default)
-    - "vertical"
- - mode : String
-    - "nosteps" (default)
-    - "steps"
-
-
-## Demo
-You can use 'grunt server' command
- * dev version 	: http://localhost:9000/samples/dev.html
- * dist version 	: http://localhost:9000/samples/dist.html
 
 
 ## Grunt
