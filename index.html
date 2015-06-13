@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Simple-sliderbar by html5crew</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Simple-sliderbar</h1>
+        <p>A simple and lightweight vanilla javascript slider.</p>
+
+        <p class="view"><a href="https://github.com/html5crew/simple-sliderbar">View the Project on GitHub <small>html5crew/simple-sliderbar</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/html5crew/simple-sliderbar/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/html5crew/simple-sliderbar/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/html5crew/simple-sliderbar">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="sliderbar" class="anchor" href="#sliderbar" aria-hidden="true"><span class="octicon octicon-link"></span></a>SliderBar</h1>
+
+<p><a href="https://travis-ci.org/html5crew/simple-sliderbar"><img src="https://travis-ci.org/html5crew/simple-sliderbar.svg?branch=master" alt="Build Status"></a></p>
+
+<p><em>SliderBar is a simple and lightweight vanilla JS slider.</em></p>
+
+<h2>
+<a id="bower" class="anchor" href="#bower" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bower</h2>
+
+<pre><code>    bower install simple-sliderbar
+</code></pre>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<div class="highlight highlight-html"><pre>    <span class="pl-c">&lt;!-- default --&gt;</span>
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>slider_0 wrap<span class="pl-pds">"</span></span>&gt;
+        &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>pp_slider<span class="pl-pds">"</span></span>&gt;
+            &lt;<span class="pl-ent">input</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>pp_slider_input<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>range<span class="pl-pds">"</span></span> <span class="pl-e">min</span>=<span class="pl-s"><span class="pl-pds">"</span>-100<span class="pl-pds">"</span></span> <span class="pl-e">max</span>=<span class="pl-s"><span class="pl-pds">"</span>100<span class="pl-pds">"</span></span> <span class="pl-e">step</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">start</span>=<span class="pl-s"><span class="pl-pds">"</span>0<span class="pl-pds">"</span></span> <span class="pl-e">style</span>=<span class="pl-s"><span class="pl-pds">"</span>display:none<span class="pl-pds">"</span></span>&gt;
+        &lt;/<span class="pl-ent">div</span>&gt;
+    &lt;/<span class="pl-ent">div</span>&gt;
+<span class="pl-s1">    &lt;<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">        <span class="pl-k">var</span> el0 <span class="pl-k">=</span> Selector.$$(<span class="pl-s"><span class="pl-pds">'</span>.slider_0 .pp_slider<span class="pl-pds">'</span></span>)[<span class="pl-c1">0</span>];</span>
+<span class="pl-s1">        <span class="pl-v">this</span>.slider0 <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">SliderBar.App</span>(el0, {</span>
+<span class="pl-s1">            <span class="pl-c">// no options</span></span>
+<span class="pl-s1">        });</span>
+<span class="pl-s1">    &lt;/<span class="pl-ent">script</span>&gt;</span>
+    <span class="pl-c">&lt;!-- steps mode --&gt;</span>
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>slider_1 wrap<span class="pl-pds">"</span></span>&gt;
+        &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>pp_slider<span class="pl-pds">"</span></span>&gt;
+            &lt;<span class="pl-ent">input</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>pp_slider_input pp_hide<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>range<span class="pl-pds">"</span></span> <span class="pl-e">min</span>=<span class="pl-s"><span class="pl-pds">"</span>-5<span class="pl-pds">"</span></span> <span class="pl-e">max</span>=<span class="pl-s"><span class="pl-pds">"</span>5<span class="pl-pds">"</span></span> <span class="pl-e">step</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">start</span>=<span class="pl-s"><span class="pl-pds">"</span>0<span class="pl-pds">"</span></span> <span class="pl-e">mode</span>=<span class="pl-s"><span class="pl-pds">"</span>steps<span class="pl-pds">"</span></span> <span class="pl-e">style</span>=<span class="pl-s"><span class="pl-pds">"</span>display:none<span class="pl-pds">"</span></span>&gt;
+        &lt;/<span class="pl-ent">div</span>&gt;
+    &lt;/<span class="pl-ent">div</span>&gt;
+<span class="pl-s1">    &lt;<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">        <span class="pl-k">var</span> el1 <span class="pl-k">=</span> Selector.$$(<span class="pl-s"><span class="pl-pds">'</span>.slider_1 .pp_slider<span class="pl-pds">'</span></span>)[<span class="pl-c1">0</span>];</span>
+<span class="pl-s1">            <span class="pl-v">this</span>.slider1 <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">SliderBar.App</span>(el1, {</span>
+<span class="pl-s1">                <span class="pl-c">// no options</span></span>
+<span class="pl-s1">            });</span>
+<span class="pl-s1">    &lt;/<span class="pl-ent">script</span>&gt;</span>
+    &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>slider_2 wrap<span class="pl-pds">"</span></span>&gt;
+        &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>pp_slider<span class="pl-pds">"</span></span>&gt;
+            &lt;<span class="pl-ent">input</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>pp_slider_input pp_hide<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>range<span class="pl-pds">"</span></span> <span class="pl-e">min</span>=<span class="pl-s"><span class="pl-pds">"</span>-5<span class="pl-pds">"</span></span> <span class="pl-e">max</span>=<span class="pl-s"><span class="pl-pds">"</span>5<span class="pl-pds">"</span></span> <span class="pl-e">step</span>=<span class="pl-s"><span class="pl-pds">"</span>0.0025<span class="pl-pds">"</span></span> <span class="pl-e">start</span>=<span class="pl-s"><span class="pl-pds">"</span>0<span class="pl-pds">"</span></span> <span class="pl-e">style</span>=<span class="pl-s"><span class="pl-pds">"</span>display:none<span class="pl-pds">"</span></span>&gt;
+        &lt;/<span class="pl-ent">div</span>&gt;
+    &lt;/<span class="pl-ent">div</span>&gt;
+<span class="pl-s1">    &lt;<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">        <span class="pl-k">var</span> el2 <span class="pl-k">=</span> Selector.$$(<span class="pl-s"><span class="pl-pds">'</span>.slider_2 .pp_slider<span class="pl-pds">'</span></span>)[<span class="pl-c1">0</span>];</span>
+<span class="pl-s1">        <span class="pl-v">this</span>.slider2 <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">SliderBar.App</span>(el2, {</span>
+<span class="pl-s1">            <span class="pl-c">// override</span></span>
+<span class="pl-s1">            min<span class="pl-k">:</span> <span class="pl-c1">0.4</span>, </span>
+<span class="pl-s1">            max<span class="pl-k">:</span> <span class="pl-c1">1.2</span>, </span>
+<span class="pl-s1">            start<span class="pl-k">:</span> <span class="pl-c1">1</span>, </span>
+<span class="pl-s1">            current<span class="pl-k">:</span> <span class="pl-c1">1</span></span>
+<span class="pl-s1">        });</span>
+<span class="pl-s1">    &lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
+
+<h2>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h2>
+
+<p>You can add options to input attributes or arguments object.</p>
+
+<ul>
+<li>min : Number</li>
+<li>max : Number</li>
+<li>start : Number</li>
+<li>current : Number</li>
+<li>orientation : String
+
+<ul>
+<li>"horizontal" (default)</li>
+<li>"vertical"</li>
+</ul>
+</li>
+<li>mode : String
+
+<ul>
+<li>"nosteps" (default)</li>
+<li>"steps"</li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo</h2>
+
+<p>You can use 'grunt server' command</p>
+
+<ul>
+<li>dev version  : http://localhost:9000/samples/dev.html</li>
+<li>dist version     : http://localhost:9000/samples/dist.html</li>
+</ul>
+
+<h2>
+<a id="grunt" class="anchor" href="#grunt" aria-hidden="true"><span class="octicon octicon-link"></span></a>Grunt</h2>
+
+<pre><code>    grunt server  // task : serve
+    grunt build   // task : jshint, clean, css2js, concat, uglify
+</code></pre>
+
+<h2>
+<a id="change-log" class="anchor" href="#change-log" aria-hidden="true"><span class="octicon octicon-link"></span></a>Change Log</h2>
+
+<ul>
+<li>1.0.3 : vertical mode position bugfix</li>
+<li>1.0.0 : first release</li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/html5crew">html5crew</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
