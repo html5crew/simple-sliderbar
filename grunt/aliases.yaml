@@ -1,8 +1,12 @@
 server:
   - 'serve'
 
-build:
+test:
   - 'jshint'
+  - 'karma:ci'
+
+build:
+  - 'test'
   - 'clean'
   - 'css2js'
   - 'concat'

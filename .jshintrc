@@ -12,21 +12,9 @@
     "Class": false,
     "DOMEvent": false,
     "DOMClassList": false,
+    "SliderBar": false,
 
     "module": false,
-    "require": false,
-
-    "describe": false,
-    "it": false,
-    "xit": false,
-    "expect": false,
-    "fail": false,
-    "beforeEach": false,
-    "afterEach": false,
-    "spyOn": false,
-    "waitsFor": false,
-    "runs": false,
-    "jasmine": false,
-    "jQuery": false
+    "require": false
   }
 }
