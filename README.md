@@ -1,5 +1,6 @@
 # SliderBar
 [![Build Status](https://travis-ci.org/html5crew/simple-sliderbar.svg?branch=master)](https://travis-ci.org/html5crew/simple-sliderbar)
+
 *SliderBar is a simple and lightweight vanilla JS slider.*
 	
 ## Bower
