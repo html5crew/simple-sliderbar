@@ -9,6 +9,10 @@
   "scripts": {
     "test": "grunt test"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/html5crew/simple-sliderbar.git"
+  },
   "keywords": [
     "sliderbar"
   ],
