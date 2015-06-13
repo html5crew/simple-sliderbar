@@ -28,12 +28,12 @@
         },
         _update: function (offset, start) {
             var position = this.PROPS_NAME['POSITION'];
-            var width = this.PROPS_NAME['WIDTH'];
+            var size = this.PROPS_NAME['SIZE'];
 
             if (offset < start) {
-                this.el.style.cssText = position + ':' + offset + '%;' + width + ':' + (start - offset) + '%;';
+                this.el.style.cssText = position + ':' + offset + '%;' + size + ':' + (start - offset) + '%;';
             } else {
-                this.el.style.cssText = position + ':' + start + '%;' + width + ':' + (offset - start) + '%;';
+                this.el.style.cssText = position + ':' + start + '%;' + size + ':' + (offset - start) + '%;';
             }
         }
     });

@@ -23,15 +23,15 @@
         },
         _bindEvent: function () {
             var self = this;
-            this.queue.on('get:width', function (callback) {
-                callback(self._getWidth());
+            this.queue.on('get:size', function (callback) {
+                callback(self._getSize());
             });
         },
-        _getWidth: function () {
-            var width = this.el.getBoundingClientRect()[this.PROPS_NAME['WIDTH']];
-            this.wrapEl.setAttribute('data-size', width);
+        _getSize: function () {
+            var size = this.el.getBoundingClientRect()[this.PROPS_NAME['SIZE']];
+            this.wrapEl.setAttribute('data-size', size);
 
-            return width;
+            return size;
         }
     });
 

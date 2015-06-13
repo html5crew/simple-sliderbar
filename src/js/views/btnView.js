@@ -34,7 +34,7 @@
         _calOffset: function (e) {
             var offset = this._super(e);
 
-            this.rate = this.lastRate + helper.num2rate(offset[this.PROPS_NAME['DX']], this.width);
+            this.rate = this.lastRate + helper.num2rate(offset[this.PROPS_NAME['DX']], this.size);
             this.rate = this.rate < 0 ? 0 : (this.rate > MAX ? MAX : this.rate);
 
             return this.rate;
@@ -72,19 +72,19 @@
             });
         },
         _update: function () {
-            this._setWidth();
+            this._setSize();
             this._setStyle();
         },
-        _setWidth: function () {
+        _setSize: function () {
             var self = this;
-            this.queue.emit('get:width', function (width) {
-                self.width = width;
+            this.queue.emit('get:size', function (size) {
+                self.size = size;
             });
         },
         _setStyle: function () {
             var rate = this._calculate(this.rate);
             if (this.options.orientation === 'vertical') {
-                this._setBtnLeftByNum(helper.rate2num(rate, this.width));
+                this._setBtnLeftByNum(helper.rate2num(rate, this.size));
             } else {
                 this._setBtnLeftByRate(rate);
             }

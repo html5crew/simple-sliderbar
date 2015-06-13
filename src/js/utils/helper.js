@@ -25,17 +25,17 @@
             }
             return '';
         },
-        num2rate: function (num, width) {
-            return num * (100 / width);
+        num2rate: function (num, size) {
+            return num * (100 / size);
         },
-        rate2num: function (rate, width) {
-            return rate * (width / 100);
+        rate2num: function (rate, size) {
+            return rate * (size / 100);
         },
         getPropsName: function (orientation) {
             if (orientation === 'vertical') {
-                return { 'POSITION': 'top',    'WIDTH': 'height',  'DX': 'dy'};
+                return { 'POSITION': 'top',    'SIZE': 'height',  'DX': 'dy'};
             } else {
-                return { 'POSITION': 'left',   'WIDTH': 'width',   'DX': 'dx' };
+                return { 'POSITION': 'left',   'SIZE': 'width',   'DX': 'dx' };
             }
         },
         createEl: function (tagName, className) {

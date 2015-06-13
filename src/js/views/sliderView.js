@@ -90,7 +90,7 @@
                 }
 
                 var offset = current - (start + pageOffset);
-                var rate = offset / self.clientRect[self.PROPS_NAME['WIDTH']] * 100;
+                var rate = offset / self.clientRect[self.PROPS_NAME['SIZE']] * 100;
                 var value = self._calculate(rate);
 
                 self._addEffect();
