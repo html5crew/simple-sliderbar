@@ -10,11 +10,10 @@
 
 
 ## Demo
-[http://html5crew.github.io/simple-sliderbar/]
-
 You can use 'grunt server' command
- * dev version 	: http://localhost:9000/samples/dev.html
- * dist version 	: http://localhost:9000/samples/dist.html
+ * gh-pages : http://html5crew.github.io/simple-sliderbar/
+ * dev version : http://localhost:9000/samples/dev.html
+ * dist version	: http://localhost:9000/samples/dist.html
 
 
 ## Options
