@@ -177,17 +177,17 @@
             }
             return '';
         },
-        num2rate: function (num, width) {
-            return num * (100 / width);
+        num2rate: function (num, size) {
+            return num * (100 / size);
         },
-        rate2num: function (rate, width) {
-            return rate * (width / 100);
+        rate2num: function (rate, size) {
+            return rate * (size / 100);
         },
         getPropsName: function (orientation) {
             if (orientation === 'vertical') {
-                return { 'POSITION': 'top',    'WIDTH': 'height',  'DX': 'dy'};
+                return { 'POSITION': 'top',    'SIZE': 'height',  'DX': 'dy'};
             } else {
-                return { 'POSITION': 'left',   'WIDTH': 'width',   'DX': 'dx' };
+                return { 'POSITION': 'left',   'SIZE': 'width',   'DX': 'dx' };
             }
         },
         createEl: function (tagName, className) {
@@ -465,7 +465,7 @@
                 }
 
                 var offset = current - (start + pageOffset);
-                var rate = offset / self.clientRect[self.PROPS_NAME['WIDTH']] * 100;
+                var rate = offset / self.clientRect[self.PROPS_NAME['SIZE']] * 100;
                 var value = self._calculate(rate);
 
                 self._addEffect();
@@ -538,7 +538,7 @@
         _calOffset: function (e) {
             var offset = this._super(e);
 
-            this.rate = this.lastRate + helper.num2rate(offset[this.PROPS_NAME['DX']], this.width);
+            this.rate = this.lastRate + helper.num2rate(offset[this.PROPS_NAME['DX']], this.size);
             this.rate = this.rate < 0 ? 0 : (this.rate > MAX ? MAX : this.rate);
 
             return this.rate;
@@ -576,19 +576,19 @@
             });
         },
         _update: function () {
-            this._setWidth();
+            this._setSize();
             this._setStyle();
         },
-        _setWidth: function () {
+        _setSize: function () {
             var self = this;
-            this.queue.emit('get:width', function (width) {
-                self.width = width;
+            this.queue.emit('get:size', function (size) {
+                self.size = size;
             });
         },
         _setStyle: function () {
             var rate = this._calculate(this.rate);
             if (this.options.orientation === 'vertical') {
-                this._setBtnLeftByNum(helper.rate2num(rate, this.width));
+                this._setBtnLeftByNum(helper.rate2num(rate, this.size));
             } else {
                 this._setBtnLeftByRate(rate);
             }
@@ -655,15 +655,15 @@
         },
         _bindEvent: function () {
             var self = this;
-            this.queue.on('get:width', function (callback) {
-                callback(self._getWidth());
+            this.queue.on('get:size', function (callback) {
+                callback(self._getSize());
             });
         },
-        _getWidth: function () {
-            var width = this.el.getBoundingClientRect()[this.PROPS_NAME['WIDTH']];
-            this.wrapEl.setAttribute('data-size', width);
+        _getSize: function () {
+            var size = this.el.getBoundingClientRect()[this.PROPS_NAME['SIZE']];
+            this.wrapEl.setAttribute('data-size', size);
 
-            return width;
+            return size;
         }
     });
 
@@ -698,12 +698,12 @@
         },
         _update: function (offset, start) {
             var position = this.PROPS_NAME['POSITION'];
-            var width = this.PROPS_NAME['WIDTH'];
+            var size = this.PROPS_NAME['SIZE'];
 
             if (offset < start) {
-                this.el.style.cssText = position + ':' + offset + '%;' + width + ':' + (start - offset) + '%;';
+                this.el.style.cssText = position + ':' + offset + '%;' + size + ':' + (start - offset) + '%;';
             } else {
-                this.el.style.cssText = position + ':' + start + '%;' + width + ':' + (offset - start) + '%;';
+                this.el.style.cssText = position + ':' + start + '%;' + size + ':' + (offset - start) + '%;';
             }
         }
     });
