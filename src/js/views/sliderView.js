@@ -12,42 +12,42 @@
 
             this.PROPS_NAME = helper.getPropsName(options.orientation);
 
-            this._render(el);
-            this._initView(el, options);
+            this._render();
+            this._initView();
             this._bindEvent();
         },
-        _render: function (el) {
-            this._append(el);
+        _render: function () {
+            this._append();
             this._composite();
 
             this.clientRect = this.wrapEl.getBoundingClientRect();
         },
-        _append: function (el) {
+        _append: function () {
             if (this.wrapEl) {
-                el.removeChild(this.wrapEl);
+                this.el.removeChild(this.wrapEl);
             }
             this.wrapEl = helper.createEl('div', 'pp_slider_wrap');
-            el.appendChild(this.wrapEl);
+            this.el.appendChild(this.wrapEl);
 
             if (this.options.orientation === 'vertical') {
-                el.className += ' vertical';
+                this.el.className += ' vertical';
             }
         },
         _composite: function () {
             var TRANSFORM_NAME = helper.getPrefix(this.wrapEl, 'transform');
             this.wrapEl.style[TRANSFORM_NAME] = 'translateZ(0)';
         },
-        _initView: function (el, options) {
-            this._initBarView(el, options);
-            this._initBtnView(el, options);
-            this._initLineView(el, options);
-            this._initPointView(el, options);
+        _initView: function () {
+            this._initBarView();
+            this._initBtnView();
+            this._initLineView();
+            this._initPointView();
 
             this.queue.emit('set:inputValue', this.options.current);
         },
-        _initBtnView: function (el, options) {
+        _initBtnView: function () {
             var self = this;
-            this.btnView = new exports.BtnView(this.wrapEl, this.queue, options);
+            this.btnView = new exports.BtnView(this.wrapEl, this.queue, this.options);
             this.btnView.on('start', function (data) {
                 self._removeEffect();
                 self.queue.emit('start', self._calculate(data));
@@ -61,14 +61,14 @@
                 self.queue.emit('end', self._calculate(data));
             });
         },
-        _initBarView: function (el, options) {
-            new exports.BarView(this.wrapEl, this.queue, options);
+        _initBarView: function () {
+            new exports.BarView(this.wrapEl, this.queue, this.options);
         },
-        _initLineView: function (el, options) {
-            this.lineView = new exports.LineView(this.wrapEl, this.queue, options);
+        _initLineView: function () {
+            this.lineView = new exports.LineView(this.wrapEl, this.queue, this.options);
         },
-        _initPointView: function (el, options) {
-            new exports.PointView(this.wrapEl, this.queue, options);
+        _initPointView: function () {
+            new exports.PointView(this.wrapEl, this.queue, this.options);
         },
         _bindEvent: function () {
             var self = this;

@@ -1,0 +1,102 @@
+<html>
+<body>
+
+<style>
+	.landscape_ex {
+		float:left;
+		width:500px;
+	}
+	.vertical_ex {
+		position:absolute;
+		float:left;
+		margin-left:500px;
+	}
+	.box.vertical {
+		float:left;
+		width:300px;
+	}
+	.background {
+		background-color:black;
+		width:400px;
+		padding:20px;
+		opacity:0.8;
+	}
+	.background .wrap {
+		position:relative;
+		width:400px;
+		height:20px;
+	}
+	.background.vertical {
+		width:20px;
+		height:400px;
+	}
+	.background.vertical .wrap {
+		width:20px;
+		height:400px;
+	}
+
+</style>
+<h1>SliderBar Demo</h1>
+<div class="landscape_ex">
+	<div class="box">
+		<h3>default</h3>
+		<div>min="-100" max="100" step="1" start="0"</div>
+		<textarea class="result_move_0"></textarea>
+		<textarea class="result_end_0"></textarea>
+		<br/>
+		<div class="background">
+			<div class="slider_0 wrap">
+				<div class="pp_slider">
+					<input class="pp_slider_input" type="range" min="-100" max="100" step="1" start="0" style="display:none">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="/bower_components/selector-alias/selector-alias.js" type="text/javascript"></script>
+<script src="/bower_components/simple-inheritance/class.js" type="text/javascript"></script>
+<script src="/bower_components/simple-observer/observer.js" type="text/javascript"></script>
+<script src="/bower_components/simple-event/event.js" type="text/javascript"></script>
+<script src="/bower_components/simple-classList/classList.js" type="text/javascript"></script>
+
+<link rel="stylesheet" type="text/css" href="/src/css/sliderbar.css">
+
+<script src="/src/js/utils/init.js" type="text/javascript"></script>
+<script src="/src/js/utils/helper.js" type="text/javascript"></script>
+<script src="/src/js/utils/draggable.js" type="text/javascript"></script>
+
+<script src="/src/js/sliderbar.js" type="text/javascript"></script>
+<script src="/src/js/views/sliderView.js" type="text/javascript"></script>
+<script src="/src/js/views/btnView.js" type="text/javascript"></script>
+<script src="/src/js/views/barView.js" type="text/javascript"></script>
+<script src="/src/js/views/lineView.js" type="text/javascript"></script>
+<script src="/src/js/views/pointView.js" type="text/javascript"></script>
+
+<script>
+	var el0 = Selector.$$('.slider_0 .pp_slider')[0];
+	this.slider0 = new SliderBar.App(el0, {
+		min: -100,
+		max: 100,
+		step: 1,
+		start: 0,
+		current:0
+	});
+	this.slider0.on('move', function (offset) {
+		Selector.$$('.result_move_0')[0].value = 'move : ' + offset;
+	});
+	this.slider0.on('end', function (offset) {
+		Selector.$$('.result_end_0')[0].value = 'end : ' + offset;
+	});
+
+	this.slider0.reset({
+		min: -100,
+		max: 80,
+		start: 0,
+		current:30
+	});
+
+//	console.log(slider0.options, slider0.sliderView.btnView.options);
+</script>
+</body>
+</html>

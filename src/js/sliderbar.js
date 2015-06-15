@@ -5,28 +5,30 @@
     var helper = exports.helper;
 
     exports.App = Observer.extend({
-        init: function (el, options) {
+        init: function (el, initOptions) {
             if (!el) {
                 throw new Error('element should be provided');
             }
             this.el = el;
-            this.options = options;
-            this.attrs = this._parseAttrs(el);
-            this.PROPS_NAME = helper.getPropsName(this.attrs.orientation);
+            this.initOptions = initOptions;
+            this.options = this._parseAttrs(el);
+            this.PROPS_NAME = helper.getPropsName(this.options.orientation);
 
             this._bindEvent();
-            this._initSliderView(el, this.attrs);
+            this._initSliderView();
             this._updateView();
         },
         reset: function (options) {
-            this.emit('reset:view', options);
+            this._extendOptions(options);
+
+            this.emit('reset:view', this.options);
         },
         resize: function () {
             this.emit('update:view');
         },
         setCurrent: function (num) {
             if (!helper.isNumeric(num)) {
-                num = this.attrs.start;
+                num = this.options.start;
             }
             this.emit('reset:view', { 'current' : num });
         },
@@ -55,7 +57,7 @@
             };
         },
         _getOptionAttr: function (name, defaultValue) {
-            var option = this.options && this.options[name];
+            var option = this.initOptions && this.initOptions[name];
             if (!helper.isNumeric(option)) {
                 if (this.inputEl.hasAttribute(name)) {
                     option = this.inputEl.getAttribute(name);
@@ -65,8 +67,8 @@
             }
             return parseFloat(option);
         },
-        _initSliderView: function (el, options) {
-            new exports.SliderView(el, this, options);
+        _initSliderView: function () {
+            this.sliderView = new exports.SliderView(this.el, this, this.options);
         },
         _bindEvent: function () {
             var self = this;
@@ -76,6 +78,14 @@
         },
         _updateView: function () {
             this.emit('update:view');
+        },
+        _extendOptions: function (options) {
+            for (var name in options) {
+                if (options.hasOwnProperty(name)) {
+                    this.options[name] = options[name];
+                }
+            }
+            this.options['range'] = this.options['max'] - this.options['min'];
         }
     });
 
