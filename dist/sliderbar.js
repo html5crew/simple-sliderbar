@@ -298,28 +298,30 @@
     var helper = exports.helper;
 
     exports.App = Observer.extend({
-        init: function (el, options) {
+        init: function (el, initOptions) {
             if (!el) {
                 throw new Error('element should be provided');
             }
             this.el = el;
-            this.options = options;
-            this.attrs = this._parseAttrs(el);
-            this.PROPS_NAME = helper.getPropsName(this.attrs.orientation);
+            this.initOptions = initOptions;
+            this.options = this._parseAttrs(el);
+            this.PROPS_NAME = helper.getPropsName(this.options.orientation);
 
             this._bindEvent();
-            this._initSliderView(el, this.attrs);
+            this._initSliderView();
             this._updateView();
         },
         reset: function (options) {
-            this.emit('reset:view', options);
+            this._extendOptions(options);
+
+            this.emit('reset:view', this.options);
         },
         resize: function () {
             this.emit('update:view');
         },
         setCurrent: function (num) {
             if (!helper.isNumeric(num)) {
-                num = this.attrs.start;
+                num = this.options.start;
             }
             this.emit('reset:view', { 'current' : num });
         },
@@ -348,7 +350,7 @@
             };
         },
         _getOptionAttr: function (name, defaultValue) {
-            var option = this.options && this.options[name];
+            var option = this.initOptions && this.initOptions[name];
             if (!helper.isNumeric(option)) {
                 if (this.inputEl.hasAttribute(name)) {
                     option = this.inputEl.getAttribute(name);
@@ -358,8 +360,8 @@
             }
             return parseFloat(option);
         },
-        _initSliderView: function (el, options) {
-            new exports.SliderView(el, this, options);
+        _initSliderView: function () {
+            new exports.SliderView(this.el, this, this.options);
         },
         _bindEvent: function () {
             var self = this;
@@ -369,6 +371,14 @@
         },
         _updateView: function () {
             this.emit('update:view');
+        },
+        _extendOptions: function (options) {
+            for (var name in options) {
+                if (options.hasOwnProperty(name)) {
+                    this.options[name] = options[name];
+                }
+            }
+            this.options['range'] = this.options['max'] - this.options['min'];
         }
     });
 
@@ -387,42 +397,42 @@
 
             this.PROPS_NAME = helper.getPropsName(options.orientation);
 
-            this._render(el);
-            this._initView(el, options);
+            this._render();
+            this._initView();
             this._bindEvent();
         },
-        _render: function (el) {
-            this._append(el);
+        _render: function () {
+            this._append();
             this._composite();
 
             this.clientRect = this.wrapEl.getBoundingClientRect();
         },
-        _append: function (el) {
+        _append: function () {
             if (this.wrapEl) {
-                el.removeChild(this.wrapEl);
+                this.el.removeChild(this.wrapEl);
             }
             this.wrapEl = helper.createEl('div', 'pp_slider_wrap');
-            el.appendChild(this.wrapEl);
+            this.el.appendChild(this.wrapEl);
 
             if (this.options.orientation === 'vertical') {
-                el.className += ' vertical';
+                this.el.className += ' vertical';
             }
         },
         _composite: function () {
             var TRANSFORM_NAME = helper.getPrefix(this.wrapEl, 'transform');
             this.wrapEl.style[TRANSFORM_NAME] = 'translateZ(0)';
         },
-        _initView: function (el, options) {
-            this._initBarView(el, options);
-            this._initBtnView(el, options);
-            this._initLineView(el, options);
-            this._initPointView(el, options);
+        _initView: function () {
+            this._initBarView();
+            this._initBtnView();
+            this._initLineView();
+            this._initPointView();
 
             this.queue.emit('set:inputValue', this.options.current);
         },
-        _initBtnView: function (el, options) {
+        _initBtnView: function () {
             var self = this;
-            this.btnView = new exports.BtnView(this.wrapEl, this.queue, options);
+            this.btnView = new exports.BtnView(this.wrapEl, this.queue, this.options);
             this.btnView.on('start', function (data) {
                 self._removeEffect();
                 self.queue.emit('start', self._calculate(data));
@@ -436,14 +446,14 @@
                 self.queue.emit('end', self._calculate(data));
             });
         },
-        _initBarView: function (el, options) {
-            new exports.BarView(this.wrapEl, this.queue, options);
+        _initBarView: function () {
+            new exports.BarView(this.wrapEl, this.queue, this.options);
         },
-        _initLineView: function (el, options) {
-            this.lineView = new exports.LineView(this.wrapEl, this.queue, options);
+        _initLineView: function () {
+            this.lineView = new exports.LineView(this.wrapEl, this.queue, this.options);
         },
-        _initPointView: function (el, options) {
-            new exports.PointView(this.wrapEl, this.queue, options);
+        _initPointView: function () {
+            new exports.PointView(this.wrapEl, this.queue, this.options);
         },
         _bindEvent: function () {
             var self = this;

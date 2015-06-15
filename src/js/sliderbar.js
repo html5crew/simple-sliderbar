@@ -68,7 +68,7 @@
             return parseFloat(option);
         },
         _initSliderView: function () {
-            this.sliderView = new exports.SliderView(this.el, this, this.options);
+            new exports.SliderView(this.el, this, this.options);
         },
         _bindEvent: function () {
             var self = this;
