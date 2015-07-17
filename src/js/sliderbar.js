@@ -24,7 +24,7 @@
             this.emit('reset:view', this.options);
         },
         resize: function () {
-            this.emit('update:view');
+            this._updateView();
         },
         setCurrent: function (num) {
             if (!helper.isNumeric(num)) {
@@ -51,6 +51,7 @@
                 step    : this._getOptionAttr('step', 1),
                 start   : this._getOptionAttr('start', 0),
                 current : this._getOptionAttr('current', start),
+                snap    : this._getOptionAttr('snap', 0),
                 type        : this.inputEl.getAttribute('type') || 'range',
                 mode        : this.inputEl.getAttribute('mode') || 'nosteps',           // steps, nosteps
                 orientation : this.inputEl.getAttribute('orientation') || 'horizontal'  // vertical, horizontal

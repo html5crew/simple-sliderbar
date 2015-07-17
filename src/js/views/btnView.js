@@ -37,6 +37,9 @@
             this.rate = this.lastRate + helper.num2rate(offset[this.PROPS_NAME['DX']], this.size);
             this.rate = this.rate < 0 ? 0 : (this.rate > MAX ? MAX : this.rate);
 
+            if (this.startRate - this.options.snap < this.rate && this.rate < this.startRate + this.options.snap) {
+                this.rate = this.startRate;
+            }
             return this.rate;
         },
         _render: function () {

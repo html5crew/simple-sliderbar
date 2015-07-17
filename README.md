@@ -22,6 +22,8 @@ You can add options to input attributes or arguments object.
  - max : Number
  - start : Number
  - current : Number
+ - snap : Number
+ 	- (startRate - snap) ~ (startRate + snap)
  - orientation : String
     - "horizontal" (default)
     - "vertical"
@@ -35,7 +37,7 @@ You can add options to input attributes or arguments object.
 	<!-- default -->
 	<div class="slider_0 wrap">
 		<div class="pp_slider">
-			<input class="pp_slider_input" type="range" min="-100" max="100" step="1" start="0" style="display:none">
+			<input class="pp_slider_input" snap="1" type="range" min="-100" max="100" step="1" start="0" style="display:none">
 		</div>
 	</div>
 	<script>
@@ -47,7 +49,7 @@ You can add options to input attributes or arguments object.
 	<!-- steps mode -->
 	<div class="slider_1 wrap">
 		<div class="pp_slider">
-			<input class="pp_slider_input pp_hide" type="range" min="-5" max="5" step="1" start="0" mode="steps" style="display:none">
+			<input class="pp_slider_input pp_hide" snap="1" type="range" min="-5" max="5" step="1" start="0" mode="steps" style="display:none">
 		</div>
 	</div>
 	<script>
@@ -58,7 +60,7 @@ You can add options to input attributes or arguments object.
 	</script>
 	<div class="slider_2 wrap">
 		<div class="pp_slider">
-			<input class="pp_slider_input pp_hide" type="range" min="-5" max="5" step="0.0025" start="0" style="display:none">
+			<input class="pp_slider_input pp_hide" snap="1" type="range" min="-5" max="5" step="0.0025" start="0" style="display:none">
 		</div>
 	</div>
 	<script>
@@ -82,5 +84,6 @@ You can add options to input attributes or arguments object.
 
 
 ## Change Log
+* 1.0.5 : add snap feature
 * 1.0.3 : vertical mode position bugfix
 * 1.0.0 : first release
