@@ -405,8 +405,6 @@
         _render: function () {
             this._append();
             this._composite();
-
-            this.clientRect = this.wrapEl.getBoundingClientRect();
         },
         _append: function () {
             if (this.wrapEl) {
@@ -461,22 +459,21 @@
             exports.event.on(this.wrapEl, 'mousedown', function (e) {
                 var current, start, pageOffset;
                 var point = (e.touches && e.touches.length > 0) ? e.touches[0] : e;
+                var clientRect = self.wrapEl.getBoundingClientRect();
 
                 if (self.options.orientation === 'vertical') {
                     current = point.pageY || point.clientY;
-                    //start = self.clientRect[self.PROPS_NAME['POSITION']];
-                    start = self.wrapEl.getBoundingClientRect()[self.PROPS_NAME['POSITION']];
+                    start = clientRect[self.PROPS_NAME['POSITION']];
                     pageOffset = window.pageYOffset;
 
                 } else {
                     current = point.pageX || point.clientX;
-                    //start = self.clientRect[self.PROPS_NAME['POSITION']];
-                    start = self.wrapEl.getBoundingClientRect()[self.PROPS_NAME['POSITION']];
+                    start = clientRect[self.PROPS_NAME['POSITION']];
                     pageOffset = window.pageXOffset;
                 }
 
                 var offset = current - (start + pageOffset);
-                var rate = offset / self.clientRect[self.PROPS_NAME['SIZE']] * 100;
+                var rate = offset / clientRect[self.PROPS_NAME['SIZE']] * 100;
                 var value = self._calculate(rate);
 
                 self._addEffect();
