@@ -642,6 +642,9 @@
         },
         _calOffset: function(e) {
             var point = (e.touches && e.touches.length > 0) ? e.touches[0] : e;
+            if (point instanceof TouchEvent) {
+                point = point.changedTouches[0];
+            }
 
             var currentX = point.pageX || point.clientX;
             var currentY = point.pageY || point.clientY;

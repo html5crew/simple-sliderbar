@@ -84,6 +84,7 @@ You can add options to input attributes or arguments object.
 
 
 ## Change Log
+* 1.0.7 : support TouchEvent
 * 1.0.6 : bar click event bugfix
 * 1.0.5 : add snap feature
 * 1.0.3 : vertical mode position bugfix

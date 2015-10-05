@@ -13,6 +13,7 @@
     "DOMEvent": false,
     "DOMClassList": false,
     "SliderBar": false,
+    "TouchEvent": false,
 
     "module": false,
     "require": false
