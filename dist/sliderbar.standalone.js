@@ -642,7 +642,7 @@
         },
         _calOffset: function(e) {
             var point = (e.touches && e.touches.length > 0) ? e.touches[0] : e;
-            if (TouchEvent && point instanceof TouchEvent) {
+            if (window.TouchEvent && point instanceof TouchEvent) {
                 point = point.changedTouches[0];
             }
 
